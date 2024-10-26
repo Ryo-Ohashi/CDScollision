@@ -2,7 +2,7 @@ load "functions.m";
 
 // parameter setting
 a := 86; b := 1; f := 6397*229172347; length := 10;
-/* a := 150; b := 1; f := 5*19*199*45153169*639964709*49503663809; */
+/* a := 150; b := 1; f := 5*19*199*45153169*639964709*49503663809; length := 10; */
 p := 2^a*3^b*f - 1; printf "Field characteristic is set to p = 2^%o*3^%o*%o - 1.\n", a,b,f;
 K<i> := ExtensionField<FiniteField(p),x|x^2+1>; omega := RootOfUnity(3,K); R<x> := PolynomialRing(K);
 e := 1; repeat
@@ -32,6 +32,7 @@ m1 := IdentityMatrix(Integers(2^(length+1)),2);
 m2 := bidiscrete_logarithm(P,Q,endomorphism([0,1,0,0],P,omega),endomorphism([0,1,0,0],Q,omega),length+1);
 m3 := bidiscrete_logarithm(P,Q,endomorphism([0,0,1,0],P,omega),endomorphism([0,0,1,0],Q,omega),length+1);
 m4 := bidiscrete_logarithm(P,Q,endomorphism([0,0,0,1],P,omega),endomorphism([0,0,0,1],Q,omega),length+1);
+printf "From now on, we are going to find a desired alpha whose norm = n1*n2...\n\n";
 
 // endomorphism search
 num := 0; start := Realtime();
